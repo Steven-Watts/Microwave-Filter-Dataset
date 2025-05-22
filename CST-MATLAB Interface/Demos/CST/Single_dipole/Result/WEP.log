@@ -1,0 +1,15 @@
+{5812} >2024-11-03 13:14:32.00683< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  Discrete port: 1
+{5812} >2024-11-03 13:14:32.00709< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  # edges: 2
+{5812} >2024-11-03 13:14:32.00729< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 0, point: 0
+{5812} >2024-11-03 13:14:32.00747< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 0, wire ends: (0.00 | 0.00 | -1.50)
+{5812} >2024-11-03 13:14:32.00762< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 0, pos (0.00 | 0.00 | 0.00)
+{5812} >2024-11-03 13:14:32.00782< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 0 is at boundary: 2
+{5812} >2024-11-03 13:14:32.00802< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 1, point: 722
+{5812} >2024-11-03 13:14:32.00818< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 1, wire ends: (0.00 | 0.00 | 1.50)
+{5812} >2024-11-03 13:14:32.00838< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 1, pos (0.00 | 0.00 | 1.50)
+{5812} >2024-11-03 13:14:32.00858< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  ending 1 is at boundary: 2
+{5812} >2024-11-03 13:14:32.00872< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  # endings: 2, # corrected: 0, not corrected: 0
+{5812} >2024-11-03 13:14:32.00890< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  connection state of ending 0: 1
+{5812} >2024-11-03 13:14:32.00913< matrixcalc_AMD64 @ EE-PF4Z37GX: 1xN000:  connection state of ending 1: 1
+
+

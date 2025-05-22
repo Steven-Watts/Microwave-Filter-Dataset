@@ -1,0 +1,13 @@
+{
+   "Author": "Steven Watts",
+   "Comment": "",
+   "Last Problem Type": "High Frequency",
+   "Last Solver Type": "HF Time Domain",
+   "Last Solver Type Abb": "t",
+   "Mesh Cells": "",
+   "Mesh Type": "Hexahedral",
+   "Modeler Unique ID": "5:microwavefilter.cst?cd51b82e97835d916934041536649319?5306:numberofparameters=11:port=1>mode=1>zre=0>zim=0?port=2>mode=1>zre=0>zim=0::trial_5.sab>13a8ac1a0c10a254a9196f5469dc3d5e>159765?grid_5.sab>aefa3f9a56537433e83102f2c1f8d0d9>2973?grid.dxf>3030607c7df5a35f5174aa86321456e8>4671:cell_1_1?feedlinewidth?numcellx?numcelly?sizecellsx?sizecellsy?sizesubx?sizesuby?thickcells?thickgroundplane?thicksub",
+   "ProjectVersion": "'# MWS Version: Version 2024.5 - Jun 14 2024 - ACIS 33.0.1 -",
+   "Results": "Unavailable",
+   "Version": "3"
+}

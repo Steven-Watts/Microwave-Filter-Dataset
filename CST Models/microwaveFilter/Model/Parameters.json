@@ -1,0 +1,69 @@
+{
+    "parameters": [
+        {
+            "descr": "Number of cells in the x direction.",
+            "expr": "1",
+            "name": "numCellX",
+            "value": "1"
+        },
+        {
+            "descr": "Number of cells in the y direction.",
+            "expr": "1",
+            "name": "numCellY",
+            "value": "1"
+        },
+        {
+            "descr": "Size of cells in the x direction.",
+            "expr": "16",
+            "name": "sizeCellsX",
+            "value": "16"
+        },
+        {
+            "descr": "Size of cells in the y direction.",
+            "expr": "16",
+            "name": "sizeCellsY",
+            "value": "16"
+        },
+        {
+            "descr": "Thickness of cells in the z direction.",
+            "expr": "0.035000000000000003",
+            "name": "thickCells",
+            "value": "0.035000000000000003"
+        },
+        {
+            "descr": "Size of the substrate the y direction.",
+            "expr": "30",
+            "name": "sizeSubX",
+            "value": "30"
+        },
+        {
+            "expr": "30",
+            "name": "sizeSubY",
+            "value": "30"
+        },
+        {
+            "descr": "Thickness of the substrate.",
+            "expr": "1.6000000000000001",
+            "name": "thickSub",
+            "value": "1.6000000000000001"
+        },
+        {
+            "descr": "Thickness of the ground plane.",
+            "expr": "0.035000000000000003",
+            "name": "thickGroundPlane",
+            "value": "0.035000000000000003"
+        },
+        {
+            "descr": "Width of the feed line.",
+            "expr": "3.1099999999999999",
+            "name": "feedLineWidth",
+            "value": "3.1099999999999999"
+        },
+        {
+            "expr": "1",
+            "name": "cell_1_1",
+            "value": "1"
+        }
+    ],
+    "version": 1
+}

@@ -1,0 +1,29 @@
+3200 0 2 0           
+20 CST MICROWAVE STUDIO 14 ACIS 32.0.1 NT 24 Tue Dec  3 13:15:01 2024 
+1 9.9999999999999995e-07 1e-10 
+T @77 BH3YH5DKZVJHCTH77KJGYXVVW64449NE5BQ3KR6FUCC4M86C3BSUFR67YAU4RE7DYCRKJJPU6DACF 
+face $2 -1 -1 $-1 $-1 $3 $-1 $-1 $4 forward single F F #
+face $5 -1 -1 $-1 $-1 $6 $-1 $-1 $7 reversed single F F #
+name_attrib-gen-attrib $-1 -1 $8 $-1 $0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @19 nPEC:Driven Element #
+loop $-1 -1 -1 $-1 $-1 $9 $0 F unknown #
+plane-surface $-1 -1 -1 $-1 0 0 -1.5 0 0 1 1 0 0 forward_v I I I I #
+name_attrib-gen-attrib $-1 -1 $10 $-1 $1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @19 nPEC:Driven Element #
+loop $-1 -1 -1 $-1 $-1 $11 $1 F unknown #
+plane-surface $-1 -1 -1 $-1 0 0 1.5 0 0 1 1 0 0 forward_v I I I I #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $12 $2 $0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @17 backwd_pickNumber 1 #
+coedge $-1 -1 -1 $-1 $9 $9 $-1 $13 reversed $3 $-1 #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $14 $5 $1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @17 backwd_pickNumber 1 #
+coedge $-1 -1 -1 $-1 $11 $11 $-1 $15 reversed $6 $-1 #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $16 $8 $0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @18 backwd_blockNumber 9 #
+edge $-1 -1 -1 $-1 $17 -3.1415926535897931 $17 3.1415926535897931 $9 $18 forward @7 unknown F #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $19 $10 $1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @18 backwd_blockNumber 10 #
+edge $-1 -1 -1 $-1 $20 -3.1415926535897931 $20 3.1415926535897931 $11 $21 forward @7 unknown F #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $-1 $12 $0 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @9 backwd_id 2 #
+vertex $-1 -1 -1 $-1 $13 $22 #
+ellipse-curve $-1 -1 -1 $-1 0 0 -1.5 -0 -0 -1 1.0106999999999999 0 0 1 I I #
+integer_attrib-name_attrib-gen-attrib $-1 -1 $-1 $14 $1 2 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1 1 @9 backwd_id 1 #
+vertex $-1 -1 -1 $-1 $15 $23 #
+ellipse-curve $-1 -1 -1 $-1 0 0 1.5 0 0 1 1.0106999999999999 0 0 1 I I #
+point $-1 -1 -1 $-1 -1.0106999999999999 1.2377505198982296e-16 -1.5 #
+point $-1 -1 -1 $-1 -1.0106999999999999 -1.2377505198982296e-16 1.5 #
+End-of-ACIS-data 

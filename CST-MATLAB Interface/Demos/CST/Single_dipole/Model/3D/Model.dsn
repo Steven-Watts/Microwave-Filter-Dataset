@@ -1,0 +1,85 @@
+*** File Version: 21.00
+
+Number of ports: 1
+Portnames: "1"
+Modenumbers: 1
+Porttypes: 1
+Portlabels: "p1"
+StaticSources:
+ThermalSources:
+FloquetPortNames:
+FloquetPortModes:
+SchematicPortNames:
+SchematicPortLabels:
+Terminals:
+StaticToReferenceTable:
+ThermalToReferenceTable:
+TerminalToReferenceTable:
+PortToReferenceTable: "1" "1'"
+FloquetToReferenceTable:
+SchematicToReferenceTable:
+StaticSourceGroups:
+ThermalSourceGroups:
+TerminalSourceGroups:
+PortSourceGroups:
+FloquetPortSourceGroups:
+SchematicPortSourceGroups:
+Number of frequency-points: 1
+Fmin: 7.500000e+08
+Fmax: 1.250000e+09
+Fscale: 1.000000e+09
+
+
+
+*** newset
+
+*** newmode
+SetType: 100
+Portname: 1
+Modenumber: 1
+Modetype: 6
+Zline: 6.500000e+01 0.000000e+00
+Fdev: 1.000000e+09
+Fmin: 7.500000e+08
+Fmax: 1.250000e+09
+PortModeConsState: 0
+*** endmode
+
+*** endset
+
+
+
+
+*** newmonitor
+monname: "farfield (f=0.8)"
+nmonfrequencies: 1
+monfrequencies: "0.80000000000000004" 
+montype: 18
+mondomain: 1
+mon_fmin: ""
+mon_fmax: ""
+mon_nfSteps: ""
+*** endmonitor
+
+*** newmonitor
+monname: "farfield (broadband)"
+nmonfrequencies: 0
+monfrequencies: 
+montype: 18
+mondomain: 3
+mon_fmin: "0.75"
+mon_fmax: "1.25"
+mon_nfSteps: "3"
+*** endmonitor
+
+*** newmonitor
+monname: "farfield (f=1.2)"
+nmonfrequencies: 1
+monfrequencies: "1.2" 
+montype: 18
+mondomain: 1
+mon_fmin: ""
+mon_fmax: ""
+mon_nfSteps: ""
+*** endmonitor
+

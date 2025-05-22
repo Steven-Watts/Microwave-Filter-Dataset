@@ -1,0 +1,67 @@
+{
+   "execution": {
+      "classname": "SMAPowerByEmagHPCFrame",
+      "libname": "SMAPowerByEmagUI"
+   },
+   "imports": [
+      "microwaveFilter\\.\\trial.dxf"
+   ],
+   "inputVariables": [
+      {
+         "name": "numCellX",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "numCellY",
+         "type": "float",
+         "value": 1.0
+      },
+      {
+         "name": "sizeCellsX",
+         "type": "float",
+         "value": 16.0
+      },
+      {
+         "name": "sizeCellsY",
+         "type": "float",
+         "value": 16.0
+      },
+      {
+         "name": "thickCells",
+         "type": "float",
+         "value": 0.035
+      },
+      {
+         "name": "sizeSubX",
+         "type": "float",
+         "value": 30.0
+      },
+      {
+         "name": "sizeSubY",
+         "type": "float",
+         "value": 30.0
+      },
+      {
+         "name": "thickSub",
+         "type": "float",
+         "value": 1.6
+      },
+      {
+         "name": "thickGroundPlane",
+         "type": "float",
+         "value": 0.035
+      },
+      {
+         "name": "feedLineWidth",
+         "type": "float",
+         "value": 3.11
+      },
+      {
+         "name": "cell_1_1",
+         "type": "float",
+         "value": 1.0
+      }
+   ],
+   "outputVariables": []
+}

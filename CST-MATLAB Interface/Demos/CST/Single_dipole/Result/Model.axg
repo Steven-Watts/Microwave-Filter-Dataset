@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CSTAuxiliaryGeometry version="20170928" creator="modeler">
+  <Objects>
+    <Object name="Ports\port1 (p1)" id="2">
+      <Cone position="3.93988243e-17 0 0" direction="0 0 3" dimension="10 10 10" material="$PortMaterial$" text="1: p1" short="1"/>
+      <LineSet points="3.93988243e-17 0 -1.5 3.93988243e-17 0 1.5" stripped="1" material="$WireMaterial$"/>
+    </Object>
+  </Objects>
+  <Materials/>
+  <Groups/>
+</CSTAuxiliaryGeometry>
