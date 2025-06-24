@@ -70,13 +70,13 @@ AddToHistory "boolean add shapes: component1:C_1_1, component1:FeedLine2", sComm
 sCommand = ""
 sCommand = sCommand + "With DXF" + vbLf
 sCommand = sCommand + "     .Reset" + vbLf
-sCommand = sCommand + "     .FileName ""./trial.dxf""" + vbLf
+sCommand = sCommand + "     .FileName ""*grid.dxf""" + vbLf
 sCommand = sCommand + "     .AddAllShapes ""True""" + vbLf
 sCommand = sCommand + "     .PreserveHoles ""True""" + vbLf
 sCommand = sCommand + "     .CloseShapes ""True""" + vbLf
 sCommand = sCommand + "     .AsCurves ""False""" + vbLf
 sCommand = sCommand + "     .HealSelfIntersections ""False""" + vbLf
-sCommand = sCommand + "     .Id ""5""" + vbLf
+sCommand = sCommand + "     .Id ""1""" + vbLf
 sCommand = sCommand + "     .SetSimplifyActive ""True""" + vbLf
 sCommand = sCommand + "     .SetSimplifyAngle ""5.0""" + vbLf
 sCommand = sCommand + "     .SetSimplifyRadiusTol ""5.0""" + vbLf

@@ -1,1 +1,1 @@
-InitInstanceDS set omp threads to: 4
+InitInstanceDS set omp threads to: 6

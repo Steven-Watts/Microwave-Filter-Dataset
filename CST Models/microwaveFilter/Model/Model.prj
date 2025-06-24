@@ -1,13 +1,21 @@
-{
-   "Author": "Steven Watts",
-   "Comment": "",
-   "Last Problem Type": "High Frequency",
-   "Last Solver Type": "HF Time Domain",
-   "Last Solver Type Abb": "t",
-   "Mesh Cells": "",
-   "Mesh Type": "Hexahedral",
-   "Modeler Unique ID": "5:microwavefilter.cst?cd51b82e97835d916934041536649319?5306:numberofparameters=11:port=1>mode=1>zre=0>zim=0?port=2>mode=1>zre=0>zim=0::trial_5.sab>13a8ac1a0c10a254a9196f5469dc3d5e>159765?grid_5.sab>aefa3f9a56537433e83102f2c1f8d0d9>2973?grid.dxf>3030607c7df5a35f5174aa86321456e8>4671:cell_1_1?feedlinewidth?numcellx?numcelly?sizecellsx?sizecellsy?sizesubx?sizesuby?thickcells?thickgroundplane?thicksub",
-   "ProjectVersion": "'# MWS Version: Version 2024.5 - Jun 14 2024 - ACIS 33.0.1 -",
-   "Results": "Unavailable",
-   "Version": "3"
-}
+[Version]
+2
+[ProjectVersion]
+'# MWS Version: Version 2023.5 - Jun 08 2023 - ACIS 32.0.1 -
+[Author]
+
+[Mesh Cells]
+75,600
+[Mesh Type]
+Hexahedral
+[Last Problem Type]
+High Frequency
+[Last Solver Type]
+HF Time Domain
+[Last Solver Type Abb]
+t
+[Results]
+Time Domain: S-Parameter
+[Modeler Unique ID]
+5:microwavefilter.cst?57d41f37bb870e4403fb952af901912f?7853:numberofparameters=11:port=1>mode=1>zre=0>zim=0?port=2>mode=1>zre=0>zim=0::trial_5.sab>13a8ac1a0c10a254a9196f5469dc3d5e>159765?grid_5.sab>aefa3f9a56537433e83102f2c1f8d0d9>2973?grid_1.sab>feae4e2b1f741765f622aef8f8e7afee>28641?grid_1.dxf>8e480584936c3c050c84d4e4b2b28a21>1087:cell_1_1?feedlinewidth?numcellx?numcelly?sizecellsx?sizecellsy?sizesubx?sizesuby?thickcells?thickgroundplane?thicksub
+[Comment]

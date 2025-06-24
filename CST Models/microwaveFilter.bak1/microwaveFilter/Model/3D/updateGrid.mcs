@@ -1,0 +1,102 @@
+' updateGrid
+
+Sub Main ()
+
+BeginHide
+Dim sCommand As String
+
+'@ delete brick: component1:C_1_1
+sCommand = ""
+sCommand = sCommand + "Solid.Delete ""component1:C_1_1"""
+AddToHistory "delete brick: component1:C_1_1", sCommand
+
+'@ define brick: component1:FeedLine1
+sCommand = ""
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""FeedLine1""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""-feedLineWidth/2"", ""feedLineWidth/2""" + vbLf
+sCommand = sCommand + ".Yrange ""sizeSubY/2"", ""(numCellY*sizeCellsY)/2""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:FeedLine1", sCommand
+
+'@ define brick: component1:FeedLine2
+sCommand = ""
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""FeedLine2""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""sizeSubX/2"", ""(numCellX*sizeCellsX)/2""" + vbLf
+sCommand = sCommand + ".Yrange ""-feedLineWidth/2"", ""feedLineWidth/2""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:FeedLine2", sCommand
+
+'@ define brick: component1:C_1_1
+sCommand = ""
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""C_1_1""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""-8"", ""-8 + cell_1_1 * sizeCellsY""" + vbLf
+sCommand = sCommand + ".Yrange ""-8"", ""-8 + cell_1_1 * sizeCellsY""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:C_1_1", sCommand
+
+'@ boolean brick: component1:FeedLine1
+sCommand = ""
+sCommand = sCommand + "With Solid" + vbLf
+sCommand = sCommand + ".Add ""component1:C_1_1"", ""component1:FeedLine1""" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "boolean add shapes: component1:C_1_1, component1:FeedLine1", sCommand
+
+'@ boolean brick: component1:FeedLine2
+sCommand = ""
+sCommand = sCommand + "With Solid" + vbLf
+sCommand = sCommand + ".Add ""component1:C_1_1"", ""component1:FeedLine2""" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "boolean add shapes: component1:C_1_1, component1:FeedLine2", sCommand
+
+'@ Add DXF
+sCommand = ""
+sCommand = sCommand + "With DXF" + vbLf
+sCommand = sCommand + "     .Reset" + vbLf
+sCommand = sCommand + "     .FileName ""./trial.dxf""" + vbLf
+sCommand = sCommand + "     .AddAllShapes ""True""" + vbLf
+sCommand = sCommand + "     .PreserveHoles ""True""" + vbLf
+sCommand = sCommand + "     .CloseShapes ""True""" + vbLf
+sCommand = sCommand + "     .AsCurves ""False""" + vbLf
+sCommand = sCommand + "     .HealSelfIntersections ""False""" + vbLf
+sCommand = sCommand + "     .Id ""5""" + vbLf
+sCommand = sCommand + "     .SetSimplifyActive ""True""" + vbLf
+sCommand = sCommand + "     .SetSimplifyAngle ""5.0""" + vbLf
+sCommand = sCommand + "     .SetSimplifyRadiusTol ""5.0""" + vbLf
+sCommand = sCommand + "     .SetSimplifyEdgeLength ""0.0""" + vbLf
+sCommand = sCommand + "     .ScaleToUnit ""False""" + vbLf
+sCommand = sCommand + "     .ImportFileUnits ""m""" + vbLf
+sCommand = sCommand + "     .UseModelTolerance ""False""" + vbLf
+sCommand = sCommand + "     .ModelTolerance ""0.0001""" + vbLf
+sCommand = sCommand + "     .ConsiderPolylineStartAndEndWidth ""True""" + vbLf
+sCommand = sCommand + "     .Version ""11.3""" + vbLf
+sCommand = sCommand + "     .DiscardElevationsReadFromDXFFile ""True""" + vbLf
+sCommand = sCommand + "     .AddLayer ""substrate"", ""PEC"", ""thickSub/2"", ""thickGroundPlane"", ""0""" + vbLf
+sCommand = sCommand + "     .Read" + vbLf
+sCommand = sCommand + "End With" + vbLf
+sCommand = sCommand + "Solid.Subtract ""component1:C_1_1"", ""substrate:import_1""" + vbLf
+sCommand = sCommand + "Component.Delete ""substrate"""
+
+AddToHistory "Add DXF", sCommand
+EndHide
+
+DeleteResults()
+
+End Sub

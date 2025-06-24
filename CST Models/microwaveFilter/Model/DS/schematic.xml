@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SchematicTopology Version="2.5" Seed="1" Grid="25">
-    <Block Id="1" ForeignId="178502215" Class="MWSSCHEM" ImageIndex="1">
+<SchematicTopology Version="2.5" Seed="2" Grid="25">
+    <Block Id="2" ForeignId="502208820" Class="MWSSCHEM" ImageIndex="1">
         <Size Height="150" Width="150"/>
         <Pins Distribution="TwoSidesDownward">
             <Pin Index="0" Port="0" BlockPosition="Left">
@@ -23,7 +23,7 @@
         <Image IconPosition="TopRight" FileName="../3D/Model.dib" Scale="AutoFit">
             <Size Height="256" Width="256"/>
         </Image>
-        <Pos X="100" Y="0"/>
+        <Pos X="100" Y="350"/>
         <ToolTip>CST MICROWAVE STUDIO schematic block MWSSCHEM1</ToolTip>
     </Block>
 </SchematicTopology>

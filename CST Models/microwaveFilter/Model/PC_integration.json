@@ -3,9 +3,6 @@
       "classname": "SMAPowerByEmagHPCFrame",
       "libname": "SMAPowerByEmagUI"
    },
-   "imports": [
-      "microwaveFilter\\.\\trial.dxf"
-   ],
    "inputVariables": [
       {
          "name": "numCellX",

@@ -1,0 +1,337 @@
+' iniFilter
+
+Sub Main ()
+
+BeginHide
+ 	Dim sCommand As String
+
+	StoreDoubleParameter "numCellX", 1
+	StoreDoubleParameter "numCellY", 1
+	StoreDoubleParameter "sizeCellsX", 16
+	StoreDoubleParameter "sizeCellsY", 16
+	StoreDoubleParameter "thickCells", 3.500000e-02
+
+	SetParameterDescription ("numCellX","Number of cells in the x direction.")
+	SetParameterDescription ("numCellY","Number of cells in the y direction.")
+	SetParameterDescription ("sizeCellsX","Size of cells in the x direction.")
+	SetParameterDescription ("sizeCellsY","Size of cells in the y direction.")
+	SetParameterDescription ("thickCells","Thickness of cells in the z direction.")
+
+	StoreDoubleParameter "sizeSubX", 30
+	StoreDoubleParameter "sizeSubY", 30
+	StoreDoubleParameter "thickSub", 1.600000e+00
+	StoreDoubleParameter "thickGroundPlane", 3.500000e-02
+	SetParameterDescription ("sizeSubX","Size of the substrate the x direction.")
+	SetParameterDescription ("sizeSubX","Size of the substrate the y direction.")
+	SetParameterDescription ("thickSub","Thickness of the substrate.")
+	SetParameterDescription ("thickGroundPlane","Thickness of the ground plane.")
+
+	StoreDoubleParameter "feedLineWidth", 3.110000e+00
+	SetParameterDescription ("feedLineWidth","Width of the feed line.")
+
+	StoreDoubleParameter "cell_1_1", 1
+
+' @ new component: component1
+sCommand = ""
+sCommand = sCommand + "With Component " + vbLf
+sCommand = sCommand + ".New ""component1""" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "new component: component1", sCommand
+
+'@ define brick: component1:GroundPlane
+sCommand = "
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""GroundPlane""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""-sizeSubX/2"", ""sizeSubX/2""" + vbLf
+sCommand = sCommand + ".Yrange ""-sizeSubY/2"", ""sizeSubY/2""" + vbLf
+sCommand = sCommand + ".Zrange ""-thickSub/2"", ""-thickSub/2 - thickGroundPlane""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:GroundPlane", sCommand
+
+'@ define material: substrate
+sCommand = "
+sCommand = sCommand + "With Material " + vbLf
+sCommand = sCommand + ".Reset " + vbLf
+sCommand = sCommand + ".Name ""substrate""" + vbLf
+sCommand = sCommand + ".FrqType ""all""" + vbLf
+sCommand = sCommand + ".Type ""Normal""" + vbLf
+sCommand = sCommand + ".Epsilon ""4.3""" + vbLf
+sCommand = sCommand + ".Mu ""1""" + vbLf
+sCommand = sCommand + ".Colour ""1"", ""1"", ""0.501961""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define material: substrate", sCommand
+
+'@ define brick: component1:Substr
+sCommand = "
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""Substr""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""substrate""" + vbLf
+sCommand = sCommand + ".Xrange ""-sizeSubX/2"", ""sizeSubX/2""" + vbLf
+sCommand = sCommand + ".Yrange ""-sizeSubY/2"", ""sizeSubY/2""" + vbLf
+sCommand = sCommand + ".Zrange ""-thickSub/2"", ""thickSub/2""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:Substr", sCommand
+
+'@ define brick: component1:FeedLine1
+sCommand = "
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""FeedLine1""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""-feedLineWidth/2"", ""feedLineWidth/2""" + vbLf
+sCommand = sCommand + ".Yrange ""sizeSubY/2"", ""(numCellY*sizeCellsY)/2""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:FeedLine1", sCommand
+
+'@ define brick: component1:FeedLine2
+sCommand = "
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""FeedLine2""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""sizeSubX/2"", ""(numCellX*sizeCellsX)/2""" + vbLf
+sCommand = sCommand + ".Yrange ""-feedLineWidth/2"", ""feedLineWidth/2""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:FeedLine2", sCommand
+
+'@ define brick: component1:C_1_1
+sCommand = "
+sCommand = sCommand + "With Brick" + vbLf
+sCommand = sCommand + ".Reset" + vbLf
+sCommand = sCommand + ".Name ""C_1_1""" + vbLf
+sCommand = sCommand + ".Component ""component1""" + vbLf
+sCommand = sCommand + ".Material ""PEC""" + vbLf
+sCommand = sCommand + ".Xrange ""-8"", ""-8 + cell_1_1 * sizeCellsY""" + vbLf
+sCommand = sCommand + ".Yrange ""-8"", ""-8 + cell_1_1 * sizeCellsY""" + vbLf
+sCommand = sCommand + ".Zrange ""thickSub/2"", ""thickSub/2 + thickCells""" + vbLf
+sCommand = sCommand + ".Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "define brick: component1:C_1_1", sCommand
+
+'@ boolean brick: component1:FeedLine1
+sCommand = ""
+sCommand = sCommand + "With Solid" + vbLf
+sCommand = sCommand + ".Add ""component1:C_1_1"", ""component1:FeedLine1""" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "boolean add shapes: component1:C_1_1, component1:FeedLine1", sCommand
+'@ boolean brick: component1:FeedLine2
+sCommand = ""
+sCommand = sCommand + "With Solid" + vbLf
+sCommand = sCommand + ".Add ""component1:C_1_1"", ""component1:FeedLine2""" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "boolean add shapes: component1:C_1_1, component1:FeedLine2", sCommand
+
+'@ Define port: 1
+sCommand = ""
+sCommand = sCommand + "Pick.PickFaceFromId ""component1:C_1_1"", ""6""" + vbLf
+
+sCommand = sCommand + "With Port" + vbLf
+sCommand = sCommand + "  .Reset" + vbLf
+sCommand = sCommand + "  .PortNumber ""1""" + vbLf
+sCommand = sCommand + "  .NumberOfModes ""1""" + vbLf
+sCommand = sCommand + "  .AdjustPolarization False" + vbLf
+sCommand = sCommand + "  .PolarizationAngle ""0.0""" + vbLf
+sCommand = sCommand + "  .ReferencePlaneDistance ""0""" + vbLf
+sCommand = sCommand + "  .TextSize ""50""" + vbLf
+sCommand = sCommand + "  .Coordinates ""Picks""" + vbLf
+sCommand = sCommand + "  .Orientation ""Positive""" + vbLf
+sCommand = sCommand + "  .PortOnBound ""True""" + vbLf
+sCommand = sCommand + "  .ClipPickedPortToBound ""False""" + vbLf
+sCommand = sCommand + "  .XrangeAdd ""0"", ""0""" + vbLf
+sCommand = sCommand + "  .YrangeAdd ""1.6*6.8"", ""1.6*6.8""" + vbLf
+sCommand = sCommand + "  .ZrangeAdd ""1.6"", ""1.6*6.8""" + vbLf
+sCommand = sCommand + "  .Shield ""PEC""" + vbLf
+sCommand = sCommand + "  .SingleEnded ""False""" + vbLf
+sCommand = sCommand + "  .Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "create Port: 1", sCommand
+
+'@ Define port: 2
+sCommand = ""
+sCommand = sCommand + "Pick.PickFaceFromId ""component1:C_1_1"", ""11""" + vbLf
+
+sCommand = sCommand + "With Port" + vbLf
+sCommand = sCommand + "  .Reset" + vbLf
+sCommand = sCommand + "  .PortNumber ""2""" + vbLf
+sCommand = sCommand + "  .NumberOfModes ""1""" + vbLf
+sCommand = sCommand + "  .AdjustPolarization False" + vbLf
+sCommand = sCommand + "  .PolarizationAngle ""0.0""" + vbLf
+sCommand = sCommand + "  .ReferencePlaneDistance ""0""" + vbLf
+sCommand = sCommand + "  .TextSize ""50""" + vbLf
+sCommand = sCommand + "  .Coordinates ""Picks""" + vbLf
+sCommand = sCommand + "  .Orientation ""Positive""" + vbLf
+sCommand = sCommand + "  .PortOnBound ""True""" + vbLf
+sCommand = sCommand + "  .ClipPickedPortToBound ""False""" + vbLf
+sCommand = sCommand + "  .XrangeAdd ""1.6*6.8"", ""1.6*6.8""" + vbLf
+sCommand = sCommand + "  .YrangeAdd ""0"", ""0""" + vbLf
+sCommand = sCommand + "  .ZrangeAdd ""1.6"", ""1.6*6.8""" + vbLf
+sCommand = sCommand + "  .Shield ""PEC""" + vbLf
+sCommand = sCommand + "  .SingleEnded ""False""" + vbLf
+sCommand = sCommand + "  .Create" + vbLf
+sCommand = sCommand + "End With"
+AddToHistory "create Port: 2", sCommand
+EndHide
+
+With Boundary
+     .Xmin "expanded open"
+     .Xmax "expanded open"
+     .Ymin "expanded open"
+     .Ymax "expanded open"
+     .Zmin "conducting wall"
+     .Zmax "expanded open"
+     .Xsymmetry "none"
+     .Ysymmetry "none"
+     .Zsymmetry "none"
+     .ApplyInAllDirections "False"
+     .OpenAddSpaceFactor "0.5"
+     .WallConductivity "1000"
+End With
+
+Mesh.SetCreator "High Frequency"
+
+With FDSolver
+     .Reset
+     .SetMethod "Tetrahedral", "Fast reduced order model"
+     .OrderTet "Second"
+     .OrderSrf "First"
+     .Stimulation "All", "All"
+     .ResetExcitationList
+     .AutoNormImpedance "False"
+     .NormingImpedance "50"
+     .ModesOnly "False"
+     .ConsiderPortLossesTet "True"
+     .SetShieldAllPorts "True"
+     .AccuracyHex "1e-6"
+     .AccuracyTet "1e-5"
+     .AccuracySrf "1e-3"
+     .LimitIterations "False"
+     .MaxIterations "0"
+     .SetCalcBlockExcitationsInParallel "True", "True", ""
+     .StoreAllResults "False"
+     .StoreResultsInCache "False"
+     .UseHelmholtzEquation "True"
+     .LowFrequencyStabilization "True"
+     .Type "Direct"
+     .MeshAdaptionHex "False"
+     .MeshAdaptionTet "True"
+     .AcceleratedRestart "True"
+     .FreqDistAdaptMode "Distributed"
+     .NewIterativeSolver "True"
+     .TDCompatibleMaterials "False"
+     .ExtrudeOpenBC "False"
+     .SetOpenBCTypeHex "Default"
+     .SetOpenBCTypeTet "Default"
+     .AddMonitorSamples "True"
+     .CalcPowerLoss "True"
+     .CalcPowerLossPerComponent "False"
+     .StoreSolutionCoefficients "True"
+     .UseDoublePrecision "False"
+     .UseDoublePrecision_ML "True"
+     .MixedOrderSrf "False"
+     .MixedOrderTet "False"
+     .PreconditionerAccuracyIntEq "0.15"
+     .MLFMMAccuracy "Default"
+     .MinMLFMMBoxSize "0.3"
+     .UseCFIEForCPECIntEq "True"
+     .UseEnhancedCFIE2 "True"
+     .UseFastRCSSweepIntEq "false"
+     .UseSensitivityAnalysis "False"
+     .UseEnhancedNFSImprint "False"
+     .UseFastDirectFFCalc "False"
+     .RemoveAllStopCriteria "Hex"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Hex", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Hex", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Hex", "False"
+     .RemoveAllStopCriteria "Tet"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Tet", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Tet", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Tet", "False"
+     .AddStopCriterion "All Probes", "0.05", "2", "Tet", "True"
+     .RemoveAllStopCriteria "Srf"
+     .AddStopCriterion "All S-Parameters", "0.01", "2", "Srf", "True"
+     .AddStopCriterion "Reflection S-Parameters", "0.01", "2", "Srf", "False"
+     .AddStopCriterion "Transmission S-Parameters", "0.01", "2", "Srf", "False"
+     .SweepMinimumSamples "3"
+     .SetNumberOfResultDataSamples "5001"
+     .SetResultDataSamplingMode "Automatic"
+     .SweepWeightEvanescent "1.0"
+     .AccuracyROM "1e-4"
+     .AddSampleInterval "", "", "1", "Automatic", "True"
+     .AddSampleInterval "", "", "", "Automatic", "False"
+     .SetUseFastResonantForSweepTet "True"
+     .MPIParallelization "False"
+     .UseDistributedComputing "False"
+     .NetworkComputingStrategy "RunRemote"
+     .NetworkComputingJobCount "3"
+     .UseParallelization "True"
+     .MaxCPUs "1024"
+     .MaximumNumberOfCPUDevices "4"
+End With
+With MeshSettings
+     .SetMeshType "Unstr"
+     .Set "UseDC", "0"
+End With
+UseDistributedComputingForParameters "False"
+MaxNumberOfDistributedComputingParameters "2"
+UseDistributedComputingMemorySetting "False"
+MinDistributedComputingMemoryLimit "0"
+UseDistributedComputingSharedDirectory "False"
+OnlyConsider0D1DResultsForDC "False"
+
+With IESolver
+     .Reset
+     .UseFastFrequencySweep "True"
+     .UseIEGroundPlane "False"
+     .SetRealGroundMaterialName ""
+     .CalcFarFieldInRealGround "False"
+     .RealGroundModelType "Auto"
+     .PreconditionerType "Auto"
+     .ExtendThinWireModelByWireNubs "False"
+     .ExtraPreconditioning "False"
+End With
+
+With IESolver
+     .SetFMMFFCalcStopLevel "0"
+     .SetFMMFFCalcNumInterpPoints "6"
+     .UseFMMFarfieldCalc "True"
+     .SetCFIEAlpha "0.500000"
+     .LowFrequencyStabilization "False"
+     .LowFrequencyStabilizationML "True"
+     .Multilayer "False"
+     .SetiMoMACC_I "0.0001"
+     .SetiMoMACC_M "0.0001"
+     .DeembedExternalPorts "True"
+     .SetOpenBC_XY "True"
+     .OldRCSSweepDefintion "False"
+     .SetRCSOptimizationProperties "True", "100", "0.00001"
+     .SetAccuracySetting "Custom"
+     .CalculateSParaforFieldsources "True"
+     .ModeTrackingCMA "True"
+     .NumberOfModesCMA "3"
+     .StartFrequencyCMA "-1.0"
+     .SetAccuracySettingCMA "Default"
+     .FrequencySamplesCMA "0"
+     .SetMemSettingCMA "Auto"
+     .CalculateModalWeightingCoefficientsCMA "True"
+     .DetectThinDielectrics "True"
+End With
+
+Solver.FrequencyRange "1", "10"
+
+ResetViewToStructure()
+
+End Sub

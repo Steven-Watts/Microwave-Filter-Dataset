@@ -1,0 +1,345 @@
+{
+    "general": {
+        "version": "2024.5",
+        "date": "2024-06-14",
+        "acis": "33.0.1",
+        "buildnumber": "20240614",
+        "project_type": "MWS",
+        "length": "mm",
+        "frequency": {
+            "unit": "GHz",
+            "minimum": "0",
+            "maximum": "0",
+            "minimum_expr": "0.0",
+            "maximum_expr": "0.0"
+        },
+        "time": "ns",
+        "created": "2024.5|33.0.1|20240614"
+    },
+    "history": [
+        {
+            "caption": "new component: component1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Component ",
+                ".New \"component1\"",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:GroundPlane",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"GroundPlane\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"-sizeSubX/2\", \"sizeSubX/2\"",
+                ".Yrange \"-sizeSubY/2\", \"sizeSubY/2\"",
+                ".Zrange \"-thickSub/2\", \"-thickSub/2 - thickGroundPlane\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define material: substrate",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Material ",
+                ".Reset ",
+                ".Name \"substrate\"",
+                ".FrqType \"all\"",
+                ".Type \"Normal\"",
+                ".Epsilon \"4.3\"",
+                ".Mu \"1\"",
+                ".Colour \"1\", \"1\", \"0.501961\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:Substr",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"Substr\"",
+                ".Component \"component1\"",
+                ".Material \"substrate\"",
+                ".Xrange \"-sizeSubX/2\", \"sizeSubX/2\"",
+                ".Yrange \"-sizeSubY/2\", \"sizeSubY/2\"",
+                ".Zrange \"-thickSub/2\", \"thickSub/2\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:FeedLine1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"FeedLine1\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"-feedLineWidth/2\", \"feedLineWidth/2\"",
+                ".Yrange \"sizeSubY/2\", \"(numCellY*sizeCellsY)/2\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:FeedLine2",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"FeedLine2\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"sizeSubX/2\", \"(numCellX*sizeCellsX)/2\"",
+                ".Yrange \"-feedLineWidth/2\", \"feedLineWidth/2\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:C_1_1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"C_1_1\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"-8\", \"-8 + cell_1_1 * sizeCellsY\"",
+                ".Yrange \"-8\", \"-8 + cell_1_1 * sizeCellsY\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "boolean add shapes: component1:C_1_1, component1:FeedLine1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Solid",
+                ".Add \"component1:C_1_1\", \"component1:FeedLine1\"",
+                "End With"
+            ]
+        },
+        {
+            "caption": "boolean add shapes: component1:C_1_1, component1:FeedLine2",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Solid",
+                ".Add \"component1:C_1_1\", \"component1:FeedLine2\"",
+                "End With"
+            ]
+        },
+        {
+            "caption": "create Port: 1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "Pick.PickFaceFromId \"component1:C_1_1\", \"6\"",
+                "With Port",
+                "  .Reset",
+                "  .PortNumber \"1\"",
+                "  .NumberOfModes \"1\"",
+                "  .AdjustPolarization False",
+                "  .PolarizationAngle \"0.0\"",
+                "  .ReferencePlaneDistance \"0\"",
+                "  .TextSize \"50\"",
+                "  .Coordinates \"Picks\"",
+                "  .Orientation \"Positive\"",
+                "  .PortOnBound \"True\"",
+                "  .ClipPickedPortToBound \"False\"",
+                "  .XrangeAdd \"0\", \"0\"",
+                "  .YrangeAdd \"1.6*6.8\", \"1.6*6.8\"",
+                "  .ZrangeAdd \"1.6\", \"1.6*6.8\"",
+                "  .Shield \"PEC\"",
+                "  .SingleEnded \"False\"",
+                "  .Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "create Port: 2",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "Pick.PickFaceFromId \"component1:C_1_1\", \"11\"",
+                "With Port",
+                "  .Reset",
+                "  .PortNumber \"2\"",
+                "  .NumberOfModes \"1\"",
+                "  .AdjustPolarization False",
+                "  .PolarizationAngle \"0.0\"",
+                "  .ReferencePlaneDistance \"0\"",
+                "  .TextSize \"50\"",
+                "  .Coordinates \"Picks\"",
+                "  .Orientation \"Positive\"",
+                "  .PortOnBound \"True\"",
+                "  .ClipPickedPortToBound \"False\"",
+                "  .XrangeAdd \"1.6*6.8\", \"1.6*6.8\"",
+                "  .YrangeAdd \"0\", \"0\"",
+                "  .ZrangeAdd \"1.6\", \"1.6*6.8\"",
+                "  .Shield \"PEC\"",
+                "  .SingleEnded \"False\"",
+                "  .Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "delete brick: component1:C_1_1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "Solid.Delete \"component1:C_1_1\""
+            ]
+        },
+        {
+            "caption": "define brick: component1:FeedLine1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"FeedLine1\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"-feedLineWidth/2\", \"feedLineWidth/2\"",
+                ".Yrange \"sizeSubY/2\", \"(numCellY*sizeCellsY)/2\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:FeedLine2",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"FeedLine2\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"sizeSubX/2\", \"(numCellX*sizeCellsX)/2\"",
+                ".Yrange \"-feedLineWidth/2\", \"feedLineWidth/2\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "define brick: component1:C_1_1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Brick",
+                ".Reset",
+                ".Name \"C_1_1\"",
+                ".Component \"component1\"",
+                ".Material \"PEC\"",
+                ".Xrange \"-8\", \"-8 + cell_1_1 * sizeCellsY\"",
+                ".Yrange \"-8\", \"-8 + cell_1_1 * sizeCellsY\"",
+                ".Zrange \"thickSub/2\", \"thickSub/2 + thickCells\"",
+                ".Create",
+                "End With"
+            ]
+        },
+        {
+            "caption": "boolean add shapes: component1:C_1_1, component1:FeedLine1",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Solid",
+                ".Add \"component1:C_1_1\", \"component1:FeedLine1\"",
+                "End With"
+            ]
+        },
+        {
+            "caption": "boolean add shapes: component1:C_1_1, component1:FeedLine2",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With Solid",
+                ".Add \"component1:C_1_1\", \"component1:FeedLine2\"",
+                "End With"
+            ]
+        },
+        {
+            "caption": "Add DXF",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "With DXF",
+                "     .Reset",
+                "     .FileName \"./trial.dxf\"",
+                "     .AddAllShapes \"True\"",
+                "     .PreserveHoles \"True\"",
+                "     .CloseShapes \"True\"",
+                "     .AsCurves \"False\"",
+                "     .HealSelfIntersections \"False\"",
+                "     .Id \"5\"",
+                "     .SetSimplifyActive \"True\"",
+                "     .SetSimplifyAngle \"5.0\"",
+                "     .SetSimplifyRadiusTol \"5.0\"",
+                "     .SetSimplifyEdgeLength \"0.0\"",
+                "     .ScaleToUnit \"False\"",
+                "     .ImportFileUnits \"m\"",
+                "     .UseModelTolerance \"False\"",
+                "     .ModelTolerance \"0.0001\"",
+                "     .ConsiderPolylineStartAndEndWidth \"True\"",
+                "     .Version \"11.3\"",
+                "     .DiscardElevationsReadFromDXFFile \"True\"",
+                "     .AddLayer \"substrate\", \"PEC\", \"thickSub/2\", \"thickGroundPlane\", \"0\"",
+                "     .Read",
+                "End With",
+                "Solid.Subtract \"component1:C_1_1\", \"substrate:import_1\"",
+                "Component.Delete \"substrate\""
+            ]
+        },
+        {
+            "caption": "execute macro: updateGrid",
+            "version": "2024.5|33.0.1|20240614",
+            "hidden": false,
+            "type": "vba",
+            "code": [
+                "DeleteResults()"
+            ]
+        }
+    ]
+}
