@@ -21,12 +21,20 @@ classdef Datastack
         function ds = Datastack(sourcePath,args)
 
             arguments
+                % The folder of the dataset, typically "savedData/Topologies"
                 sourcePath {mustBeFolder}
+                % Split the data into training and validation
                 args.splitData {mustBeNumericOrLogical} = true
+                % Select which method to use for validation
                 args.validationSelectionType {mustBeMember(args.validationSelectionType,["FN","random","CN"])} = "FN"
+                % Enable to use the symmetric nature of the dataset to
+                % double the data
                 args.expandData{mustBeNumericOrLogical} = true;
+                % Enable to calculate where energy is being lost
                 args.calculateResonance{mustBeNumericOrLogical} = true;
+                % Keep Topology Distribution labels for the data
                 args.keepLabels{mustBeNumericOrLogical} = false;
+                % Which topology types you want to load
                 args.topologyDistributions {mustBeMember(args.topologyDistributions, {'X','Rotated Noisy X','Rotated X','Slash','Rotated Ellipse','Rotated Slash','H','Y', 'Outliers'})} = ...
                     {'X','Rotated Noisy X','Rotated X','Slash','Rotated Ellipse','Rotated Slash','H','Y'};
             end
