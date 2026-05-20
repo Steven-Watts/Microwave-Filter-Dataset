@@ -5,9 +5,9 @@ clear
 DH = DataHandler("X");
 
 % 2. Then instantiate the data handler
-numberOfSimulations = 500; % Any Number of topologies
-numberOfSimulationsPerFile = 500; % Typically 500 to keep within .mat save size
-DH.expandDataSet(500,500);
+numberOfSimulations = 1; % Any Number of topologies
+numberOfSimulationsPerFile = 1; % Typically 500 to keep within .mat save size
+DH.expandDataSet(numberOfSimulations,numberOfSimulationsPerFile);
 
 % 3. Now you will have temporary unique topologies in:
 % "/savedData/Topologies to Simualte".

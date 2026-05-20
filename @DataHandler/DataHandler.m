@@ -28,7 +28,7 @@ classdef DataHandler
             % Create the dataset
             dataset = struct([]);
             fileName = "temp_" + string(dh.topologyType) + "_" + string(datetime('now','TimeZone','local','Format','d_MMM_y_HH_mm_ss'));
-            disp("Creating: " + fullfile("savedData/Topologies to Simulate/",fileName));
+            disp("Creating: " + fullfile("savedData/Topologies to Solve/",fileName));
 
             saturated = false;
 
@@ -60,8 +60,8 @@ classdef DataHandler
                 saveEndIdx = min(length(dataset),numberOfSimulationsPerFile);
                 dataset = dataSet2Save(1:saveEndIdx);
                 dataSet2Save = dataSet2Save((saveEndIdx + 1): end);
-                save(fullfile("savedData/Topologies to Simulate/",fileName + "_" + ii),"dataset");
-                disp("Saved: " + fullfile("savedData/Topologies to Simulate/",fileName, "_" + ii));
+                save(fullfile("savedData/Topologies to Solve/",fileName + "_" + ii),"dataset");
+                disp("Saved: " + fullfile("savedData/Topologies to Solve/",fileName, "_" + ii));
             end
 
         end
@@ -146,7 +146,7 @@ classdef DataHandler
 
         function processNewTopologies()
 
-            allFiles = dir("savedData\Topologies to Simulate\");
+            allFiles = dir("savedData\Topologies to Solve\");
 
             % Look at which files need to be processed
             for fileIdx = 1:length(allFiles)
@@ -226,7 +226,7 @@ classdef DataHandler
 
         function dataset = appendDataset(dataset,processFileName)
 
-            loadData = load("savedData\Topologies to Simulate\" + processFileName);
+            loadData = load("savedData\Topologies to Solve\" + processFileName);
 
             for insertIdx = 1:length(loadData.dataset)
                 dataset(end+1).imageName = "";
@@ -291,7 +291,7 @@ classdef DataHandler
                 args.CstFilePath = 'CST Models\microwaveFilter.cst';
             end
 
-            files = dir("savedData\Topologies to Simulate\");
+            files = dir("savedData\Topologies to Solve\");
             files = files(3:end);
 
             CSTIF = CSTInterface(args.CstFilePath);
@@ -299,7 +299,7 @@ classdef DataHandler
             for fileIdx = 1:length(files)
                 fileName = files(fileIdx).name;
                 disp("Processing " + fileName);
-                load("savedData\Topologies to Simulate\" + fileName, "dataset");
+                load("savedData\Topologies to Solve\" + fileName, "dataset");
 
                 for topIdx = 1:length(dataset)
                     if isempty(dataset(topIdx).solution)
