@@ -286,14 +286,15 @@ classdef DataHandler
             end
         end
 
-        function solveDataSet(args)
+        function solveNewTopologies(args)
             arguments
                 args.CstFilePath = 'CST Models\microwaveFilter.cst';
             end
 
             files = dir("savedData\Topologies to Solve\");
-            files = files(3:end);
+            files = files(contains({files(:).name},".mat")); % Remove navigators
 
+            % Launch The connection
             CSTIF = CSTInterface(args.CstFilePath);
 
             for fileIdx = 1:length(files)
@@ -303,13 +304,20 @@ classdef DataHandler
 
                 for topIdx = 1:length(dataset)
                     if isempty(dataset(topIdx).solution)
-                        tic
                         CSTIF.deleteResults();
                         CSTIF.updateCSTGrid(dataset(topIdx).topology);
                         dataset(topIdx).solution = CSTIF.solveCST();
-                        toc
+
+                        if mod(topIdx,10) == 0
+                            % Save the solutions every so often.
+                            save("savedData\Topologies to Solve\" + fileName, "dataset");
+                            disp("Progress: " + topIdx + "/" + length(dataset));
+                        end
                     end
                 end
+
+                save("savedData\Topologies to Solve\" + fileName, "dataset");
+                disp("Saving " + fileName);
             end
 
         end
