@@ -1,0 +1,92 @@
+' UpdateGrid
+Sub Main ()
+
+BeginHide
+Dim sCommand As String
+
+'@ delete brick: component1:C_1_1
+Solid.Delete "component1:C_1_1"
+
+'@ define brick: component1:FeedLine1
+With Brick
+	.Reset
+	.Name "FeedLine1"
+	.Component "component1"
+	.Material "PEC"
+	.Xrange "-feedLineWidth/2", "feedLineWidth/2"
+	.Yrange "sizeSubY/2", "(numCellY*sizeCellsY)/2"
+	.Zrange "thickSub/2", "thickSub/2 + thickCells"
+.Create
+End With
+
+
+'@ define brick: component1:FeedLine2
+With Brick
+	.Reset
+	.Name "FeedLine2"
+	.Component "component1"
+	.Material "PEC"
+	.Xrange "sizeSubX/2", "(numCellX*sizeCellsX)/2"
+	.Yrange "-feedLineWidth/2", "feedLineWidth/2"
+	.Zrange "thickSub/2", "thickSub/2 + thickCells"
+	.Create
+End With
+
+
+'@ define brick: component1:C_1_1
+With Brick
+	.Reset
+	.Name "C_1_1"
+	.Component "component1"
+	.Material "PEC"
+	.Xrange "-8", "-8 + cell_1_1 * sizeCellsY"
+	.Yrange "-8", "-8 + cell_1_1 * sizeCellsY"
+	.Zrange "thickSub/2", "thickSub/2 + thickCells"
+	.Create
+End With
+
+
+'@ boolean brick: component1:FeedLine1
+With Solid
+	.Add "component1:C_1_1", "component1:FeedLine1"
+End With
+
+'@ boolean brick: component1:FeedLine2
+With Solid
+	.Add "component1:C_1_1", "component1:FeedLine2"
+End With
+
+
+'@ Add DXF
+With DXF
+     .Reset
+     .FileName "*grid.dxf"
+     .AddAllShapes "True"
+     .PreserveHoles "True"
+     .CloseShapes "True"
+     .AsCurves "False"
+     .HealSelfIntersections "False"
+     .Id "1"
+     .SetSimplifyActive "True"
+     .SetSimplifyAngle "5.0"
+     .SetSimplifyRadiusTol "5.0"
+     .SetSimplifyEdgeLength "0.0"
+     .ScaleToUnit "False"
+     .ImportFileUnits "m"
+     .UseModelTolerance "False"
+     .ModelTolerance "0.0001"
+     .ConsiderPolylineStartAndEndWidth "True"
+     .Version "11.3"
+     .DiscardElevationsReadFromDXFFile "True"
+     .AddLayer "substrate", "PEC", "thickSub/2", "thickGroundPlane", "0"
+     .Read
+End With
+Solid.Subtract "component1:C_1_1", "substrate:import_1"
+Component.Delete "substrate"
+
+
+DeleteResults()
+
+EndHide
+
+End Sub
