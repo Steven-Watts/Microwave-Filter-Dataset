@@ -140,6 +140,28 @@ classdef DataHandler
             end
 
         end
+
+        function generateImages(dh)
+            disp("Generating Images for: " + dh.topologyType);
+
+            dataset = dh.loadDataset(dh.topologyType);
+
+            % Ensure target folder exists
+            outFolder = fullfile("savedData/Topologies/", dh.topologyType, "Images");
+            if ~isfolder(outFolder)
+                mkdir(outFolder);
+            end
+
+            for ii = 1:length(dataset)
+                imageSaveName = fullfile(outFolder, dataset(ii).imageName);
+                imageToSave = dataset(ii).topology; % 32 x 32 binary array
+
+                % Write image
+                imwrite(imageToSave, char(imageSaveName));
+            end
+
+        end
+
     end
 
     methods(Static)
