@@ -1,0 +1,41 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: Microwave Filter Dataset Codebase.
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Steven Brett
+    family-names: Watts
+    email: 23548592@sun.ac.za
+    affiliation: Stellenbosch University
+    orcid: 'https://orcid.org/0009-0005-6736-1200'
+  - given-names: Leanne
+    family-names: Bodenstein
+    email: ljohnson@sun.ac.za
+    affiliation: Stellenbosch University
+    orcid: 'https://orcid.org/0000-0002-2447-314X'
+  - given-names: Rensu
+    name-particle: P
+    family-names: Theart
+    email: rptheart@sun.ac.za
+    affiliation: Stellenbosch University
+    orcid: 'https://orcid.org/0000-0003-0508-1690'
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20637220
+    description: The URL of version 1.0.0 of the software.
+repository-code: >-
+  https://github.com/Steven-Watts/Microwave-Filter-Dataset-Codebase.
+abstract: >-
+  This is a codebase that can be used along with an
+  accompanying dataset to access, recreate or expand the
+  dataset. 
+keywords:
+  - Microwave Filter
+  - Electromagnetics
+  - Machine Learning
+  - High Frequency Electronics
